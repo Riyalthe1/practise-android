@@ -43,8 +43,8 @@ class MainActivity : ComponentActivity() {
 
 fun getProject(): List<Project> {
     return listOf(
-        Project("riyal", "i am nothing"),
-        Project("riyal", "i am nothing"),
+        Project("riyal", "there's no god but Allah"),
+        Project("riyan", "And Prophet Muhammad is the messenger."),
         Project("riyal", "i am nothing"),
         Project("riyal", "i am nothing"),
         Project("riyal", "i am nothing"),
