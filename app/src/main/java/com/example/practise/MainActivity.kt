@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,8 +41,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PractiseTheme {
-                //Portfolio()
-                StateManagement()
+                Portfolio()
+              //  StateManagement()
             }
         }
     }
@@ -77,7 +78,7 @@ val fontFamily = FontFamily(
 fun Portfolio() {
     //lazy coloums toggle system
     val isOpen = remember {
-        mutableListOf(false)
+        mutableStateOf(false)
     }
 
 
@@ -102,7 +103,7 @@ fun Portfolio() {
             Divider()
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "hello riyal the1",
+                text = "hello riyal the 1",
                 style = TextStyle(
                     color = Color.Magenta,
                     fontFamily = fontFamily,
@@ -137,12 +138,13 @@ fun Portfolio() {
                 Text(text = "/factoid", modifier = Modifier.padding(start = 10.dp))
             }
             Spacer(modifier = Modifier.height(8.dp))
-            Button(onClick = { isOpen.value = !isOpen }, shape = RectangleShape) {
+            Button(onClick = { isOpen.value = !isOpen.value }, shape = RectangleShape) {
                 Text(text = "my projects")
             }
+            if (isOpen.value){
             LazyColumn {
                 items(getProject()) {
-                    ProjectItem(it)
+                    ProjectItem(it)}
                 }
             }
         }
@@ -150,6 +152,7 @@ fun Portfolio() {
     }
 
 }
+
 
 @Composable
 fun ProjectItem(project: Project) {
